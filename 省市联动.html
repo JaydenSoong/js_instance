@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>省市联动</title>
+</head>
+<body>
+    <!--这里是通过触发 onchange 事件来调用功能函数的，选择下拉列表的不同选项，就触发了 onchange 事件-->
+    <select name="" id="provence" onchange="sf_change(this.value)">
+        <option value="0">---请选择---</option>
+        <option value="四川省">四川省</option>
+        <option value="吉林省">吉林省</option>
+        <option value="江苏省">江苏省</option>
+    </select>
+    <select name="" id="contry"></select>
+    <script>
+        //定义二维数组，用二维数组来存储数据。
+        var arr = new Array(3);
+        //通过把二维数组里面的一维数组的第一个元素设置成省份名。来作为后面判断的依据。
+        arr[0] = ["四川省","成都市", "绵阳市", "自贡市", "攀枝花市", "泸州市", "德阳市", "广元市", "遂宁市",
+                  "内江市", "乐山市", "资阳市", "宜宾市", "南充市", "达州市", "雅安市",
+                  "阿坝藏族羌族自治州", "甘孜藏族自治州", "凉山彝族自治州", "广安市", "巴中市", "眉山市"];
+        arr[1] = ["吉林省", "长春市", "吉林市", "四平市", "辽源市", "通化市", "白山市", "白城市", "松原市", "延边朝鲜族自治州"];
+        arr[2] = ["江苏省", "南京市", "无锡市", "徐州市", "常州市", "苏州市", "南通市", "连云港市",
+                  "淮安市", "盐城市", "扬州市", "镇江市", "泰州市", "宿迁市"];
+        var contrys = document.getElementById("contry");
+        var contrys_col = contrys.getElementsByTagName("option");
+        function sf_change(arrx) {
+            //在重新往 contrys 里添加元素是。要先将其清空，这里采用遍历删除节点的方式。
+            for(var m=0; m<contrys_col.length; m++){
+                contrys.removeChild(contrys_col[m]);
+                //由于美删除一个节点。集合的长度就发生了改变。所以，这里将指针重置，每次删除第一个元素。
+                m--;
+            }
+
+            //遍历二维数组的每一个元素。
+            for(var i=0; i<arr.length; i++) {
+                //
+                if(arr[i][0] == arrx){
+                    for(var j=1; j<arr[i].length; j++){
+                        var optionx = document.createElement("option");
+                        optionx.appendChild(document.createTextNode(arr[i][j]));
+                        contrys.appendChild(optionx);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
