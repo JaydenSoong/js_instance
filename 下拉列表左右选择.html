@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{width: 120px; height: 200px; float: left; margin: 0 10px}
+        select{width: 120px; height: 130px}
+    </style>
+</head>
+<body>
+    <div id="divid1">
+        <select id="select_l" multiple="multiple">
+            <option value="">AAA</option>
+            <option value="">BBB</option>
+            <option value="">CCC</option>
+            <option value="">DDD</option>
+            <option value="">EEE</option>
+            <option value="">FFF</option>
+            <option value="">GGG</option>
+        </select>
+        <input type="button" value="所选移到右边>>" onclick="mv_right()">
+        <input type="button" value="全部移到右边>>" onclick="all_mv_right()">
+    </div>
+    <div id="divid2">
+        <select id="select_r" multiple="multiple"></select>
+        <input type="button" value="<<所选移到左边" onclick="mv_left()">
+        <input type="button" value="<<全部移到左边" onclick="all_mv_left()">
+    </div>
+    <script>
+        /*
+         * 1、移动操作通过 appendChild() 来操作，此方法相当于复制粘贴。
+         * 2、注意事项：每执行了一次 appendChild() 操作后，通过 getElementsByTagName() 所返回的数组长度都少了一个。
+         *    所以，这里采用每次将再 i--，以准确遍历到每个元素。
+         * 3、全部移动时，不需要判断 option 是否被选中。
+         */
+        var select1 = document.getElementById("select_l");
+        var select2 = document.getElementById("select_r");
+        var option_col_l = select1.getElementsByTagName("option");
+        var option_col_r = select2.getElementsByTagName("option");
+
+        // 所选移到右边
+        function mv_right(){
+            for(var i=0; i<option_col_l.length; i++){
+                if(option_col_l[i].selected){
+                    select2.appendChild(option_col_l[i]);
+                    i--;
+                }
+            }
+        }
+
+        // 所选移到左边
+        function mv_left(){
+            for(var i=0; i<option_col_r.length; i++){
+                if(option_col_r[i].selected){
+                    select1.appendChild(option_col_r[i]);
+                    i--;
+                }
+            }
+        }
+
+        // 全部移到右边
+        function all_mv_right(){
+            for(var i=0; i<option_col_l.length; i++){
+                select2.appendChild(option_col_l[i]);
+                i--;
+            }
+ 
+        }
+
+        // 全部移到左边
+        function all_mv_left(){
+            for(var i=0; i<option_col_r.length; i++){
+                select1.appendChild(option_col_r[i]);
+                i--;
+            }
+        }
+    </script>
+</body>
+</html>
