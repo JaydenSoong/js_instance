@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态生成表格</title>
+</head>
+<body>
+    <span>行数：</span><input type="text" id="line_num">
+    <span>列数：</span><input type="text" id="cow_num">
+    <input type="button" value="生成" onclick="create_table()">
+    <br>
+    <div id="tab_con"></div>
+    <script>
+        function create_table(){
+            // 一、确定表格的行数，列数。
+            var line = document.getElementById("line_num").value;
+            var cow = document.getElementById("cow_num").value;
+            // 二、表格HTML
+            var tab = "<table border='1'>";
+            // 1. 通过循环修改表格HTML的内容
+            for(var i=0; i<line; i++){
+                tab += "<tr height='30'>";
+                for(var j=0; j<cow; j++){
+                    tab += "<td width='80'></td>"
+                }
+                tab += "</tr>";
+            }
+            // 三、在页面中添加表格
+            // 1. 添加的地方
+            var con = document.getElementById("tab_con"); 
+            con.innerHTML = tab; 
+        }
+    </script>
+</body>
+</html>
