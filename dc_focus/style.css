@@ -1,0 +1,123 @@
+﻿/* CSS Document */
+/*
+site:		腾讯大成网_通用样式表
+auther:		kylefeng
+updated:	2017-10-26
+updated by:	v_pjqpu
+*/
+/*-----base.css-----*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,table,th,td,section,article,aside,header,footer,nav,dialog,figure{margin:0;padding:0;}
+body,button,input,select,textarea{font:14px/1.5 \5FAE\8F6F\96C5\9ED1,\5b8b\4f53;;}
+
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,b
+,th,var,i{font-weight:normal; font-style:normal;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+ol,ul{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-weight:normal; font-size:100%;}
+q:before,q:after{content:"";}
+abbr,acronym{border:0;}
+select,input,button,button img,textarea,label{margin:0px; vertical-align:middle;}
+b{font-weight:bold;}
+.clear{ overflow:hidden; clear:both;}
+.clearfix:after{clear:both; overflow:hidden;content:".";}
+/*#login img { padding:2px; border:solid 1px #e7e7e7; vertical-align:middle; }*/
+
+/*-----common------*/
+a{text-decoration:none;color:#333;}
+img { display: block;  }
+a:hover{text-decoration:none;color:#4285db;}
+/* 设置滚动条的样式 */
+::-webkit-scrollbar { width: 2px; background: #cacaca; }
+/* 滚动槽 */
+::-webkit-scrollbar-track { background: #cacaca; }
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb{ background: #4285db; }
+::-webkit-scrollbar-thumb:window-inactive {background: #4285db;}
+
+
+.sprit{ background-image: url(http://mat1.gtimg.com/cd/2017/home/sprite1.png);  }
+
+.hide{ display:none}
+.show{ display: block; }
+.fl{ float:left; }
+.fr{ float:right; }
+.mt5{ margin-top: 5px; }
+.mb5{ margin-bottom: 5px; }
+.mt10{ margin-top: 10px; }
+.mb10{ margin-bottom: 10px; }
+.mt27{ margin-top: 27px; }
+.mb27{ margin-bottom: 27px; }
+.mt28{ margin-top: 28px; }
+.mt30{ margin-top: 30px; }
+.mb30{ margin-bottom: 30px; }
+.mt35{ margin-top: 35px; }
+.mb35{ margin-bottom: 35px; }
+
+.wrap{ width: 1240px; margin-left: auto; margin-right: auto; }
+.wrap460{ width: 460px; }
+.wrap390{ width: 390px; margin-left: auto; margin-right: auto;}
+.wrap490{ width: 490px; }
+.wrap420{ width: 420px;margin-left: auto; margin-right: auto; }
+.wrap290{ width: 290px; }
+
+.f14{ font-size: 14px; }
+.f16{ font-size: 16px; }
+.f18{ font-size: 18px; }
+.f20{ font-size: 20px; }
+.fw{ font-weight: bold; }
+
+.life_guide img,
+.life_show img,
+.scdolist img,
+.mod_focu img,
+.weekhot_con img,
+#original_first img,
+.hover-img img,
+.tk_list img,
+.art_list img { transition: all 0.5s ease-out; -webkit-transition: all 0.5s ease-out; -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out; -ms-transition: all 0.5s ease-out; }
+
+.life_guide img:hover,
+.life_show img:hover,
+.scdolist img:hover,
+.mod_focu img:hover,
+.weekhot_con img:hover,
+#original_first img:hover,
+.hover-img img:hover,
+.tk_list img:hover,.art_list img:hover{
+    transform: scale(1.12);
+    -webkit-transform: scale(1.12);
+    -moz-transform: scale(1.12);
+    -o-transform: scale(1.12);
+    -ms-transform: scale(1.12);
+    opacity: .8; }
+
+
+.text_dotted{width:30px; height:40px; float:right; margin-top:-32px;}
+
+.tit{ background: url(http://mat1.gtimg.com/cd/2017/home/bg_tit.jpg) no-repeat left top; background-size: 44px auto; font-size:20px; padding: 13px 0; font-weight: bolder; }
+.text_one{text-overflow:ellipsis; white-space: nowrap; overflow: hidden; }
+
+
+/*focus*/
+.focus{ width: 100%; position: relative; }
+.fPic,.fcon{ width: 100%; }
+
+.fPic{ position: relative; overflow: hidden; width: 100%; height: 340px; }
+.fcon{ float:none; list-style: none; width: 100%; height: 340px; position: absolute; left:0; top:0;  }
+.fcon a{ position: relative; display: block; color:#fff; font-size: 16px; font-weight: bolder; }
+.fcon img{ display: block; width: 100%; height: auto; max-height:340px; }
+.focus_bg{ position: absolute; left:0; bottom:0; width: 100%; height: 136px;  background: url(http://mat1.gtimg.com/cd/2017/home/bg_focust.png) repeat-x left bottom; background-size: auto 100%; }
+.fcon span{ display: block;width: 100%; height: 60px; position: absolute; bottom:0; }
+
+.fbg{ position: absolute; bottom:16px; left:35px; }
+.fbg_page li{ display: block; float:left; width: 8px; height: 8px; border-radius: 50%;margin:0 8px; background: #fff;
+    transition: all 0.2s ease-out; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out; -ms-transition: all 0.2s ease-out; cursor: pointer; }
+.fbg_page li.on{ width: 22px; border-radius: 8px; background: #0064c5; }
+
+
+
+
