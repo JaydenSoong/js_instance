@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仿京东放大镜效果</title>
+  <style>
+    .container {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .preview {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      border: 1px solid #ccc;
+    }
+    .preview img-con{
+      width: 100%;
+      height: 100%;
+    }
+    .preview em {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      right: 0;
+      bottom: 0;
+      background: url(./images/__sprite.png) 0 -24px;
+    }
+    .preview .mask{
+      display: none;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      left: 0;
+      top: 0;
+      border: 1px solid #aaa;
+      background-color: #fede4f;
+      opacity: .5;
+      cursor: move;
+    }
+    .preview .zoom{
+      display: none;
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      left: 350px;
+      top: -1px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+    .preview .zoom img{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="preview">
+      <div class="img-con"><img src="./images/small.jpg" alt="conon"></div>
+      <div class="mask"></div>
+      <div class="zoom"><img src="./images/big.jpg" alt="conon"></div>
+      <em></em>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', ()=>{
+      let preview = document.querySelector('.preview');
+      let mask = document.querySelector('.mask');
+      let zoom = document.querySelector('.zoom');
+      // 鼠标放到 preview 显示遮罩块与 zoom 盒子
+      preview.addEventListener('mouseover', ()=>{
+        mask.style.display = 'block';
+        zoom.style.display = 'block';
+      });
+      // 鼠标离开 preview 隐藏遮罩块与 zoom 盒子
+      preview.addEventListener('mouseout', ()=>{
+        mask.style.display = 'none';
+        zoom.style.display = 'none';
+      });
+      // 鼠标移动
+      preview.addEventListener('mousemove', ()=>{
+        // 1.获取鼠标在 preview 盒子中的位置
+        let x = event.pageX - preview.offsetLeft;
+        let y = event.pageY - preview.offsetTop;
+        // 遮罩层最大移动距离
+        let maskMoveMax = preview.offsetWidth-mask.offsetWidth;
+        // 2.让鼠标在遮罩层的中间。
+        let maskX = x - mask.offsetWidth/2;
+        let maskY = y - mask.offsetHeight/2;
+        
+        if(x-mask.offsetWidth/2 <=0) {
+          maskX = 0;
+        } else if(x-mask.offsetWidth/2 >=maskMoveMax) {
+          maskX = maskMoveMax;
+        }
+        // 因为是正文形，所以长宽一样
+        if(y - mask.offsetHeight/2 <=0) {
+          maskY = 0;
+        } else if(y - mask.offsetHeight/2 >= maskMoveMax) {
+          maskY = maskMoveMax;
+        }
+        mask.style.left = maskX + 'px';
+        mask.style.top = maskY + 'px';
+        // 大图 
+        let bigImg = document.querySelector('.zoom').children[0];
+        // 大图最大移动距离
+        let bigMoveMax = bigImg.offsetWidth - zoom.offsetWidth;
+        // 3.让大图和遮罩层等比例沿反方向移动，比例关系：
+        // 遮罩层移动距离/遮罩层最大移动距离 = 大图移动距离/大图最大移动距离
+        let bigX = maskX * bigMoveMax / maskMoveMax;
+        let bigY = maskY * bigMoveMax / maskMoveMax;
+        bigImg.style.left = - bigX + 'px';
+        bigImg.style.top = - bigY + 'px';
+      });
+    });
+  </script>
+</body>
+</html>
